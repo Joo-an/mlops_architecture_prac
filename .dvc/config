@@ -1,0 +1,5 @@
+[core]
+    remote = myremote
+['remote "myremote"']
+    url = s3://final-mlops-test/dvcstore
+    region = ap-northeast-2

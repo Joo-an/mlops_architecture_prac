@@ -48,6 +48,6 @@ jobs:
             cd /home/${{ secrets.EC2_USER }}/mlops_architecture_prac && \
               git fetch --all && \
               git reset --hard origin/main && \
-              docker compose pull && \
-              docker compose up -d
+              docker-compose pull && \
+              docker-compose up -d
           "

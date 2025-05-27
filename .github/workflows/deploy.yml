@@ -45,7 +45,7 @@ jobs:
       - name: Deploy on EC2 via SSH
         run: |
           ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "
-            cd /home/${{ secrets.EC2_USER }}/your_project_path && \
+            cd /home/${{ secrets.EC2_USER }}/mlops_architecture_prac && \
             git pull && \
             docker compose pull && \
             docker compose up -d

@@ -1,10 +1,31 @@
-name: js-monitoring
+version: "3.8"
 
 services:
-  web:
+  fastapi:
     build: .
-    container_name: js-fastapi-monitoring
-    volumes:
-      - .:/code
+    container_name: fastapi
     ports:
-      - "5050:80"
+      - "8000:80"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/mydb
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  postgres_data:

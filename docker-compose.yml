@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   fastapi:
-    build: .
+    image: 573578168547.dkr.ecr.ap-northeast-2.amazonaws.com/final-mlops-test:latest
     container_name: fastapi
     ports:
       - "8000:80"
@@ -10,8 +10,6 @@ services:
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/mydb
     depends_on:
       - postgres
-    volumes:
-      - .:/app
 
   postgres:
     image: postgres:15

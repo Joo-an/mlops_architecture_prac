@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]    # master/main 등 내 저장소 브랜치에 맞게
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
